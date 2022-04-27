@@ -25,20 +25,20 @@ const Index = ({
   technologies,
   data,
   footerData,
+  json,
+  json2,
 }) => {
-  console.log(data)
-
   return (
     <div>
       {/* <Script type="text/javascript" src="./assets/js/owl.carousel.min.js" /> */}
       {/* <Menu */}
       <Layout active={1}>
         <Hero data={data} />
-        <Servicearea services={services} />
-        <TechnologiesUsed technologies={technologies} />
+        <Servicearea services={services} fullData={json} />
+        <TechnologiesUsed technologies={technologies} fullData={json} />
 
-        <Latestproj projects={projects} />
-        <Testinomials testimonials={testimonials} />
+        <Latestproj projects={projects} fullData={json2} />
+        <Testinomials testimonials={testimonials} fullData={json} />
         <FooterBanner />
         <Footer footerData={footerData} active={1} />
         <Copyarea footerData={footerData} />
@@ -53,6 +53,18 @@ export const getStaticProps = async (context) => {
 
   let translated = undefined;
   let json = undefined;
+  let json2 = undefined;
+  if (locale == "heb") {
+    const res = await fetch(
+      "https://cgsapi.herokuapp.com/api/projects?populate[0]=projects,projects.project_tech_stacks&locale=he-IL"
+    );
+    json2 = await res.json();
+  } else {
+    const res = await fetch(
+      "https://cgsapi.herokuapp.com/api/projects?populate[0]=projects,projects.project_tech_stacks"
+    );
+    json2 = await res.json();
+  }
 
   if (locale == "heb") {
     const res = await fetch(
@@ -66,12 +78,6 @@ export const getStaticProps = async (context) => {
     json = await res.json();
   }
 
-  const res2 = await fetch(
-    "https://cgsapi.herokuapp.com/api/projects?populate[0]=projects,projects.project_tech_stacks"
-  );
-
-  const json2 = await res2.json();
-
   const res3 = await fetch(
     "https://cgsapi.herokuapp.com/api/footers?populate=*"
   );
@@ -79,6 +85,8 @@ export const getStaticProps = async (context) => {
 
   return {
     props: {
+      json,
+      json2,
       projects: json2.data[0].attributes.projects,
       services: json.data[0].attributes.services,
       testimonials: json.data[0].attributes.testimonials,

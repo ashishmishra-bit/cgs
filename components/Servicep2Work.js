@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
-const Servicep2Work = ({ how_it_works, desc }) => {
+const Servicep2Work = ({ how_it_works, desc, fullData }) => {
   const [heading, setHeading] = useState();
 
   const getHeadings = async () => {
@@ -20,11 +20,11 @@ const Servicep2Work = ({ how_it_works, desc }) => {
         <div className="container">
           <div className="p2work-wrapper">
             <div className="p2work-heading text-center">
-              <h2>{heading?.attributes.how_it_works_title}</h2>
+              <h2>{fullData?.data[0].attributes.how_it_works_title}</h2>
 
               <p>
                 <ReactMarkdown>
-                  {heading?.attributes.how_it_works_desc}
+                  {fullData?.data[0].attributes.how_it_works_desc}
                 </ReactMarkdown>
                 {/* <ReactMarkdown
                   children={heading?.attributes.how_it_works_desc}

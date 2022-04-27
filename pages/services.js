@@ -7,7 +7,7 @@ import ServiceHero from "../components/ServiceHero";
 import Servicep2Help from "../components/Servicep2Help";
 import Servicep2Work from "../components/Servicep2Work";
 
-const Services = ({ service_card, how_it_works, data, footerData }) => {
+const Services = ({ service_card, how_it_works, data, footerData, json }) => {
   return (
     <div>
       <Layout active={2} route="/services">
@@ -15,11 +15,13 @@ const Services = ({ service_card, how_it_works, data, footerData }) => {
         <Servicep2Work
           how_it_works={how_it_works}
           desc={data.how_it_works_desc}
+          fullData={json}
         />
         <Servicep2Help
           service_card={service_card}
           title={data.title}
           desc={data.description}
+          fullData={json}
         />
         <FooterBanner />
         <Footer footerData={footerData} active={2} />
@@ -56,6 +58,7 @@ export const getStaticProps = async (context) => {
 
   return {
     props: {
+      json,
       service_card: json?.data[0]?.attributes.service_card,
       how_it_works: json?.data[0]?.attributes.how_it_works,
       data: json?.data[0]?.attributes,

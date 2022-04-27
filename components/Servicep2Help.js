@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 
-const Servicep2Help = ({ service_card, title, desc }) => {
+const Servicep2Help = ({ service_card, title, desc, fullData }) => {
   return (
     <div>
       <section id="p2help ">
@@ -11,7 +11,6 @@ const Servicep2Help = ({ service_card, title, desc }) => {
               <h2>{title}</h2>
               <p>
                 <ReactMarkdown>{desc}</ReactMarkdown>
-                {/* <ReactMarkdown children={desc} /> */}
               </p>
             </div>
 

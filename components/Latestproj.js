@@ -2,18 +2,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
-const Latestproj = ({ projects }) => {
-  const [heading, setHeading] = useState();
-
-  const getHeadings = async () => {
-    const res = await fetch("https://cgsapi.herokuapp.com/api/projects");
-    const headings = await res.json();
-    setHeading(headings.data[0]);
-  };
-
-  useEffect(() => {
-    getHeadings();
-  }, []);
+const Latestproj = ({ projects, fullData }) => {
+  console.log(fullData);
   return (
     <div>
       <section id="service" className="service-two">
@@ -29,10 +19,10 @@ const Latestproj = ({ projects }) => {
               <div className="col-lg-6 col-md-6">
                 <div className="service-left">
                   <div className="service-left-heading">
-                    <h2>{heading?.attributes.project_heading}</h2>
+                    <h2>{fullData?.data[0].attributes.project_heading}</h2>
                     <p>
                       <ReactMarkdown>
-                        {heading?.attributes.project_description}
+                        {fullData?.data[0].attributes.project_description}
                       </ReactMarkdown>
                     </p>
                   </div>

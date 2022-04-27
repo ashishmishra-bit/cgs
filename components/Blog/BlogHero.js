@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
-const BlogHero = ({ data }) => {
+const BlogHero = ({ data, fullData }) => {
   const [email, setEmail] = React.useState("");
   const [isSubs, setIsSubs] = React.useState(0);
   const [isAlert, setIsAlert] = React.useState(0);
@@ -28,6 +28,7 @@ const BlogHero = ({ data }) => {
       }, 5000);
     }
   };
+  console.log(fullData);
   return (
     <section id="bloghero">
       <div className="container mt-5">

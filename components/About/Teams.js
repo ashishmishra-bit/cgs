@@ -1,10 +1,11 @@
 import React from "react";
-import SwiperCore, { Navigation , Pagination } from "swiper";
+import SwiperCore, { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 SwiperCore.use([Navigation]);
 
-const Teams = ({ teams }) => {
+const Teams = ({ teams, fullData }) => {
+  console.log(teams);
   return (
     <section id="use">
       <div className="container">
@@ -32,11 +33,10 @@ const Teams = ({ teams }) => {
             <div className="teamslider use-wrapper ">
               <div className="flex">
                 <Swiper
-                   modules={[Navigation, Pagination]}
+                  modules={[Navigation, Pagination]}
                   slidesPerView={1}
                   spaceBetween={15}
                   loop={true}
-                  
                   navigation={{
                     prevEl: ".custom_prev_br1",
                     nextEl: ".custom_next_br1",

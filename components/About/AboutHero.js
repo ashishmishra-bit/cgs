@@ -1,20 +1,25 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 
-const AboutHero = ({ data }) => {
-  console.log(data);
+const AboutHero = ({ data, fullData }) => {
+  console.log(fullData);
   return (
     <section id="about-hero">
       <div className="container mt-5">
         <div className="about-hero-wrapper text-center">
           <h2>
-            {data.hero_heading}
-            <br /> <span style={{ color: "blue" }}> {data.heading_blue}</span>
+            {fullData?.data[0]?.attributes.hero_heading}
+            <br />{" "}
+            <span style={{ color: "blue" }}>
+              {fullData?.data[0]?.attributes.heading_blue}
+            </span>
           </h2>
           {/* <span>Cognitive Spark</span> */}
           {/* <p dangerouslySetInnerHTML={{ __html: data.about_description }} /> */}
           <p>
-            <ReactMarkdown>{data.about_description}</ReactMarkdown>
+            <ReactMarkdown>
+              {fullData?.data[0]?.attributes.hero_short_description}
+            </ReactMarkdown>
           </p>
           <div className="about-contact">
             <div className="row">

@@ -5,28 +5,17 @@ import ReactMarkdown from "react-markdown";
 
 SwiperCore.use([Navigation]);
 
-const Testinomials = ({ testimonials }) => {
-  const [heading, setHeading] = useState();
-
-  const getHeadings = async () => {
-    const res = await fetch("https://cgsapi.herokuapp.com/api/homes");
-    const headings = await res.json();
-    setHeading(headings.data[0]);
-  };
-
-  useEffect(() => {
-    getHeadings();
-  }, []);
+const Testinomials = ({ testimonials, fullData }) => {
   return (
     <section id="use" className="client">
       <div className="container">
         <div className="use-wrapper client-wrapper">
           <div className="use-heading">
             <div className="use-heading-left">
-              <h2>{heading?.attributes.what_our_client_say_tittle}</h2>
+              <h2>{fullData?.data[0].attributes.what_our_client_say_tittle}</h2>
               <p>
                 <ReactMarkdown>
-                  {heading?.attributes.what_our_client_say_description}
+                  {fullData?.data[0].attributes.what_our_client_say_description}
                 </ReactMarkdown>
               </p>
             </div>
@@ -57,7 +46,6 @@ const Testinomials = ({ testimonials }) => {
                 className=""
                 style={{
                   display: "flex",
-                 
                 }}
               >
                 {testimonials.map((item, index) => (

@@ -7,15 +7,15 @@ import FooterBanner from "../components/FooterBanner";
 import Layout from "../components/Layout";
 import Navbar from "../components/Navbar";
 
-const Aboutus = ({ data, teams,footerData }) => {
+const Aboutus = ({ data, teams, footerData, json }) => {
   return (
     <div>
       <Layout active={5} route="/about-us">
-      <AboutHero data={data} />
-      <AboutProjectArea data={data} />
-      <Teams teams={teams} />
-      <FooterBanner  />
-      <Footer footerData={footerData} active={5} />
+        <AboutHero data={data} fullData={json} />
+        <AboutProjectArea data={data} fullData={json} />
+        <Teams teams={teams} fullData={json} />
+        <FooterBanner />
+        <Footer footerData={footerData} active={5} />
       </Layout>
     </div>
   );
@@ -42,14 +42,17 @@ export const getStaticProps = async (context) => {
     json = await res.json();
   }
 
-  const res3 =  await fetch("https://cgsapi.herokuapp.com/api/footers?populate=*");
-  const footer =  await res3.json();
+  const res3 = await fetch(
+    "https://cgsapi.herokuapp.com/api/footers?populate=*"
+  );
+  const footer = await res3.json();
 
   return {
     props: {
+      json,
       data: json.data[0].attributes,
       teams: json.data[0].attributes.our_team,
-      footerData :  footer.data[0]
+      footerData: footer.data[0],
     },
   };
 };

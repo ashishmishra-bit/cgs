@@ -1,8 +1,9 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Options from "./Options";
+import ReactMarkdown from "react-markdown";
 
-const Techno = ({ technologies, allTechs }) => {
+const Techno = ({ technologies, allTechs, fullData }) => {
   const [filterData, setFilterData] = useState(technologies);
   const [filterValue, setFilterValue] = useState("");
 
@@ -38,10 +39,11 @@ const Techno = ({ technologies, allTechs }) => {
               <div className="row">
                 <div className="col-md-6">
                   <div className="service-left-heading">
-                    <h2>Technologies</h2>
+                    <h2>{fullData?.data[0].attributes.technology_title}</h2>
                     <p>
-                      Listing of <strong>the technologies we us</strong> and a
-                      short description.
+                      <ReactMarkdown>
+                        {fullData?.data[0].attributes.technology_description}
+                      </ReactMarkdown>
                     </p>
                     <div className="p3lagname">
                       <p style={{ color: "black" }}>

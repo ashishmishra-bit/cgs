@@ -3,18 +3,7 @@ import Link from "next/link";
 import { AnimationOnScroll } from "react-animation-on-scroll";
 import ReactMarkdown from "react-markdown";
 
-const Servicearea = ({ services }) => {
-  const [heading, setHeading] = useState();
-
-  const getHeadings = async () => {
-    const res = await fetch("https://cgsapi.herokuapp.com/api/homes");
-    const headings = await res.json();
-    setHeading(headings.data[0]);
-  };
-
-  useEffect(() => {
-    getHeadings();
-  }, []);
+const Servicearea = ({ services, fullData }) => {
   return (
     <div>
       <section id="service">
@@ -24,14 +13,11 @@ const Servicearea = ({ services }) => {
               <div className="col-lg-6 col-md-6">
                 <div className="service-left">
                   <div className="service-left-heading">
-                    <h2> {heading?.attributes.service_title}</h2>
+                    <h2>{fullData.data[0].attributes.service_title}</h2>
                     <p>
                       <ReactMarkdown>
-                        {heading?.attributes.service_description}
+                        {fullData.data[0].attributes.service_description}
                       </ReactMarkdown>
-                      {/* <ReactMarkdown
-                        children={heading?.attributes.service_description}
-                      />{" "} */}
                     </p>
                   </div>
                   <div className="service-left-wrapper pr-2">

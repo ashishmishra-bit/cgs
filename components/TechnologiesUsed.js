@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 
 SwiperCore.use([Navigation]);
 
-const TechnologiesUsed = ({ technologies }) => {
+const TechnologiesUsed = ({ technologies, fullData }) => {
   const [heading, setHeading] = useState();
 
   const getHeadings = async () => {
@@ -24,14 +24,11 @@ const TechnologiesUsed = ({ technologies }) => {
         <div className="use-wrapper">
           <div className="use-heading">
             <div className="use-heading-left">
-              <h2> {heading?.attributes.technology_title}</h2>
+              <h2>{fullData?.data[0].attributes.technology_title}</h2>
               <p>
                 <ReactMarkdown>
-                  {heading?.attributes.technology_description}
+                  {fullData?.data[0].attributes.technology_description}
                 </ReactMarkdown>
-                {/* <ReactMarkdown
-                  children={heading?.attributes.technology_description}
-                /> */}
               </p>
             </div>
             <div className="use-heading-right d-none d-lg-flex">
