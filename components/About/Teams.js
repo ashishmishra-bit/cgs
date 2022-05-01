@@ -31,12 +31,107 @@ const Teams = ({ teams, fullData }) => {
           </div>
 
           <div className="use-slider container">
-            <div className="teamslider use-wrapper ">
+            <div className="mySwiperLappy teamslider use-wrapper ">
               <div className="flex">
                 <Swiper
                   modules={[Navigation, Pagination]}
                   slidesPerView={3}
                   spaceBetween={35}
+                  loop={true}
+                  navigation={{
+                    prevEl: ".custom_prev_br1",
+                    nextEl: ".custom_next_br1",
+                  }}
+                  className=""
+                  style={{
+                    display: "flex",
+                  }}
+                >
+                        {teams.map((team, index) => (
+                          <SwiperSlide key={index}>
+                                    <div className="slide-one-content">
+                                      <div className="slide-one-left">
+                                        <img
+                                          src={
+                                            team.photo
+                                              ? `${team.photo}`
+                                              : `https://oliver-andersen.se/wp-content/uploads/2018/03/cropped-Profile-Picture-Round-Color.png`
+                                          }
+                                          alt="images not found"
+                                        />
+                                      </div>
+                                      <div className="slide-one-right">
+                                        <div className="slide-one-heading">
+                                          <div className="slide-one-heading-left">
+                                            <h5>{team.name}</h5>
+                                            <p>{team.designation}</p>
+                                          </div>
+                                          <div className="slide-one-heading-right">
+                                            <ul>
+                                              {team.linkedIN ? (
+                                                <>
+                                                  <li>
+                                                    <a href={team.linkedIN}>
+                                                      <span>
+                                                        <FaLinkedinIn className="fa-brands fa-linkedin"></FaLinkedinIn>
+                                                      </span>
+                                                    </a>
+                                                  </li>
+                                                </>
+                                              ) : (
+                                                <></>
+                                              )}
+
+                                              {team.github ? (
+                                                <>
+                                                  <li>
+                                                    <a href={team.github}>
+                                                      <span>
+                                                        <FaGithub className="fa-brands fa-github"></FaGithub>
+                                                      </span>
+                                                    </a>
+                                                  </li>
+                                                </>
+                                              ) : (
+                                                <></>
+                                              )}
+
+                                              {team.twitter ? (
+                                                <>
+                                                  <li>
+                                                    <a href={team.twitter}>
+                                                      <span>
+                                                        <FaTwitter className="fa-brands fa-twitter"></FaTwitter>
+                                                      </span>
+                                                    </a>
+                                                  </li>
+                                                </>
+                                              ) : (
+                                                <></>
+                                              )}
+                                            </ul>
+                                          </div>
+                                        </div>
+                                        <div className="slide-one-text">
+                                          <p>{team.content}</p>
+                                        </div>
+                                      </div>
+
+                            </div>
+                          </SwiperSlide>
+                        ))}
+
+                </Swiper>
+              </div>
+            </div>
+
+            {/* Mobile */}
+            <div className="mySwiperMobile teamslider use-wrapper ">
+              <div className="flex">
+                <Swiper
+                  modules={[Navigation, Pagination]}
+                  slidesPerView={1}
+                  spaceBetween={0}
                   loop={true}
                   navigation={{
                     prevEl: ".custom_prev_br1",
@@ -136,6 +231,17 @@ const Teams = ({ teams, fullData }) => {
           .myItems {
             display: flex;
             width: 100%;
+          }
+          @media only screen and (min-width: 800px) {
+            .mySwiperMobile {
+              display: none;
+            }
+          }
+
+          @media only screen and (max-width: 800px) {
+            .mySwiperLappy {
+              display: none;
+            }
           }
         `}
       </style>
