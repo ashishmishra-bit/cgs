@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 const Latestproj = ({ projects, fullData }) => {
   console.log(fullData , "projects");
   return (
-    <div className={"new" + (fullData?.data[0].attributes.show_projects? 'hidden ' : ' ')}>
+    <div className={"new" + (fullData?.data[0].attributes.hide_projects? 'hidden ' : ' ')}>
       
       <section id="service" className={"service-two "}>
         <div
