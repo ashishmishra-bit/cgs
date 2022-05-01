@@ -6,8 +6,9 @@ import ReactMarkdown from "react-markdown";
 SwiperCore.use([Navigation]);
 
 const Testinomials = ({ testimonials, fullData }) => {
+  console.log(fullData , "CLient");
   return (
-    <section id="use" className="client">
+    <section id="use" className={"client " + (fullData?.data[0].attributes.show_testimonials? 'hidden' : '')}>
       <div className="container">
         <div className="use-wrapper client-wrapper">
           <div className="use-heading">
@@ -354,6 +355,9 @@ const Testinomials = ({ testimonials, fullData }) => {
             .mySwiperLappy {
               display: none;
             }
+          }
+          .hidden{
+            display:none;
           }
         `}
       </style>

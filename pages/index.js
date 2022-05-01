@@ -37,7 +37,7 @@ const Index = ({
         <Servicearea services={services} fullData={json} />
         <TechnologiesUsed technologies={technologies} fullData={json} />
 
-        <Latestproj projects={projects} fullData={json2} />
+        <Latestproj projects={projects} fullData={json} />
         <Testinomials testimonials={testimonials} fullData={json} />
         <FooterBanner />
         <Footer footerData={footerData} active={1} />

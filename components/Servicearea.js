@@ -6,7 +6,8 @@ import ReactMarkdown from "react-markdown";
 const Servicearea = ({ services, fullData }) => {
   return (
     <div>
-      <section id="service">
+      
+      <section id="service" className={"service"}>
         <div className="container">
           <div className="service-wrapper">
             <div className="row">
@@ -152,6 +153,14 @@ const Servicearea = ({ services, fullData }) => {
           </div>
         </div>
       </section>
+      <style jsx>
+        {`
+          
+          .hidden{
+            display:none;
+          }
+        `}
+      </style>
     </div>
   );
 };

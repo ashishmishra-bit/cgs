@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
 const Latestproj = ({ projects, fullData }) => {
-  console.log(fullData);
+  console.log(fullData , "projects");
   return (
-    <div>
-      <section id="service" className="service-two">
+    <div className={"new" + (fullData?.data[0].attributes.show_projects? 'hidden ' : ' ')}>
+      
+      <section id="service" className={"service-two "}>
         <div
           data-aos="fade-zoom-in"
           data-aos-offset="200"
@@ -216,6 +217,13 @@ const Latestproj = ({ projects, fullData }) => {
           </div>
         </div>
       </section>
+      <style jsx>
+        {`          
+          .hidden{
+            display:none;
+          }
+        `}
+      </style>
     </div>
   );
 };
