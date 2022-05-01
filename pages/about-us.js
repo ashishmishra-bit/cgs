@@ -54,6 +54,7 @@ export const getStaticProps = async (context) => {
       teams: json.data[0].attributes.our_team,
       footerData: footer.data[0],
     },
+    revalidate: 1,
   };
 };
 
