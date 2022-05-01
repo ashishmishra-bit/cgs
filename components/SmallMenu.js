@@ -1,7 +1,9 @@
 import Link from "next/link";
 import React from "react";
+import { useRouter } from "next/router";
 
-const SmallMenu = ({ isLeft, SetisLeft, active }) => {
+const SmallMenu = ({ isLeft, SetisLeft, active,route }) => {
+  const router =  useRouter();
   return (
     <div className={`sm-menu ${isLeft ? "leftMenu" : "realMenu"} `}>
       <div className="sm-header">
@@ -26,7 +28,9 @@ const SmallMenu = ({ isLeft, SetisLeft, active }) => {
                 </a>
               </li>
               <li>
-                <a href="#">Heb</a>
+              <Link href={route?`/${route}`:"/"} locale="heb" >
+                    <a className={router.locale=="en-US"?"":"active ml-3"} >Heb</a>
+                    </Link>
               </li>
             </ul>
           </div>
